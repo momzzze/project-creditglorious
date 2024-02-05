@@ -20,18 +20,16 @@ function App() {
     }
   };
   return (
-    <>
-      {console.log(userData)}
-      <h1 className="sm:text-3xl md:text-5xl bg-purple-500 text-white font-bold text-center p-2 ">Front page</h1>
+    <div className="">
+      <h1 className="sm:text-3xl md:text-5xl  font-bold text-center p-2 ">Project GitHub Card</h1>
       <SearchForm onSearch={handleSearch} />
-
       <div>
         <Toaster
           position="bottom-center"
           reverseOrder={false}
         />
       </div>
-    </>
+    </div>
   )
 }
 
