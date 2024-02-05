@@ -14,14 +14,14 @@ const SearchForm = ({ onSearch }) => {
 
             <input
                 type="text"
-                placeholder="Search..."
-                className="border border-gray-300 p-2 rounded-l w-64"
+                placeholder="Search a GitHub User"
+                className="border w-1/3 border-gray-300 p-2 rounded-l-lg"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />
             <button
                 type="submit"
-                className="border border-gray-300 p-2 rounded-l w-64 hover:bg-gray-100"
+                className="border-t border-r border-b w-20 border-gray-300 p-2 rounded-r-lg hover:bg-gray-100 "
             >
                 Search
             </button>
