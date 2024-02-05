@@ -2,6 +2,7 @@
 import toast, { Toaster } from "react-hot-toast";
 import SearchForm from "./components/SearchForm"
 import { useState } from "react";
+import Card from "./components/Card";
 function App() {
   const [userData, setUserData] = useState(null);
 
@@ -23,6 +24,7 @@ function App() {
     <div className="">
       <h1 className="sm:text-3xl md:text-5xl  font-bold text-center p-2 ">Project GitHub Card</h1>
       <SearchForm onSearch={handleSearch} />
+      {userData && <Card userData={userData} />}
       <div>
         <Toaster
           position="bottom-center"
