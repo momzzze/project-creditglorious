@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { getUserBySearchingQuote } from "../services/userService"
+import toast from "react-hot-toast";
 const SearchForm = ({ onSearch }) => {
     const [query, setQuery] = useState("");
 
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        const userData = await getUserBySearchingQuote(query);
+
+        if(query.trim() === ""){
+            toast.error("Please enter a username");
+            return;
+        }
+        const userData = await getUserBySearchingQuote(query.trim());
         onSearch(userData);
     }
     return (
