@@ -4,10 +4,12 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import SearchForm from "./components/SearchForm"
 import { useEffect, useState } from "react";
 import Card from "./components/Card";
+import { getRandomQuote } from "./services/quoteService";
 function App() {
   const [userData, setUserData] = useState(null);
   const [theme, setTheme] = useState(localStorage.theme || "light");
-  
+  const [quoteData, setQuoteData] = useState({ text: "", author: "" });
+
   const handleSearch = (data) => {
     try {
       if (data) {
@@ -26,10 +28,21 @@ function App() {
     localStorage.theme = newTheme;
     setTheme(newTheme);
   }
-  
+  async function getQuote() {
+    try {
+      const quote = await getRandomQuote();
+      setQuoteData(quote);
+    } catch (error) {
+      console.error("Error fetching quote:", error.message);
+    }
+  }
   useEffect(() => {
     themeSwitch();
   }, []);
+
+  useEffect(() => {
+    getQuote();
+  }, [userData]);
 
   return (
     <div className="dark:bg-slate-700 bg-white min-h-screen">
@@ -37,7 +50,7 @@ function App() {
         <h1 className="sm:text-3xl md:text-5xl  font-bold text-center p-2 dark:text-white">Project GitHub Card</h1>
         <div className="flex" onClick={themeSwitch}>
           <div className="">
-          {theme === "dark" ? (
+            {theme === "dark" ? (
               <FaSun className="text-white w-6 h-6" />
             ) : (
               <FaMoon className="text-gray-500 w-6 h-6" />
@@ -46,6 +59,12 @@ function App() {
         </div>
       </div>
       <SearchForm onSearch={handleSearch} />
+      <div className="flex justify-center">
+        <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-md w-1/3 my-5">
+          <p className="dark:text-white text-lg text-center">{quoteData.text}</p>
+          <p className="dark:text-white mt-4 text-center">by {quoteData.author}</p>
+        </div>
+      </div>
       {userData && <Card userData={userData} />}
       <div>
         <Toaster
