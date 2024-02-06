@@ -13,7 +13,7 @@ const getRandomQuote = async () => {
         }
       } catch (error) {
         console.error("Error fetching quote:", error.message);
-        throw error; // Re-throw the error to be caught by the calling function
+        throw error;
       }
 }
 
