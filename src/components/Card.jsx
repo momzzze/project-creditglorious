@@ -34,7 +34,7 @@ const Card = ({ userData }) => {
     return (
         <div className="flex justify-center mt-10 ">
             <div className="border border-gray-300 p-4 w-[300px] md:w-1/3 rounded-lg shadow-md flex flex-col justify-center items-center px-[40px]">
-                
+
                 <div className="flex flex-col md:flex-row w-full justify-between items-center rounded-lg dark:text-white">
                     <div className="order-2 md:order-1">
                         {login && (<div className="flex gap-3 flex-col md:flex-row justify-start items-center my-1 w-full">
@@ -43,11 +43,17 @@ const Card = ({ userData }) => {
                         </div>
                         )}
 
-                        {name && (
+                        {name ? (
                             <div className="flex flex-col md:flex-row  items-center my-2 w-full justify-start ">
                                 <span className="mr-2 font-bold">Name</span>
                                 <p className="text-2xl">{name}</p>
                             </div>
+                        ):(
+                            <div className="flex items-center my-2 flex-col md:flex-row w-full justify-start">
+                                <span className="mr-2 font-bold">Name</span>
+                                <p className="text-gray-600 dark:text-white">No provided name</p>
+                            </div>                        
+                        
                         )}
 
                         {email ? (
@@ -138,7 +144,7 @@ const Card = ({ userData }) => {
                     </div>
                 ) : (
                     <div className="p-2 rounded-lg w-full justify-center flex my-3">
-                        <p className="text-gray-600 ">No repositories found</p>
+                        <p className="text-gray-600 dark:text-gray-300">No repositories found</p>
                     </div>
                 )}
             </div>
