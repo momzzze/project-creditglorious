@@ -32,7 +32,7 @@ const Card = ({ userData }) => {
     },[login]);
 
     return (
-        <div className="flex justify-center mt-10 ">
+        <div className="flex justify-center mt-10 mb-10">
             <div className="border border-gray-300 p-4 w-[300px] md:w-1/3 rounded-lg shadow-md flex flex-col justify-center items-center px-[40px]">
 
                 <div className="flex flex-col md:flex-row w-full justify-between items-center rounded-lg dark:text-white">
