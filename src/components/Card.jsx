@@ -22,14 +22,14 @@ const Card = ({ userData }) => {
     useEffect(() => {
         const fetchRepos = async () => {
             try {
-                const reposData = await getUsersTopReposBySize(login);                
+                const reposData = await getUsersTopReposBySize(login);
                 setRepos(reposData.slice(0, 10));
             } catch (error) {
                 console.error("Error fetching repos:", error.message);
             }
         };
         fetchRepos();
-    },[login]);
+    }, [login]);
 
     return (
         <div className="flex justify-center mt-10 mb-10">
@@ -48,12 +48,12 @@ const Card = ({ userData }) => {
                                 <span className="mr-2 font-bold">Name</span>
                                 <p className="text-2xl">{name}</p>
                             </div>
-                        ):(
+                        ) : (
                             <div className="flex items-center my-2 flex-col md:flex-row w-full justify-start">
                                 <span className="mr-2 font-bold">Name</span>
                                 <p className="text-gray-600 dark:text-white">No provided name</p>
-                            </div>                        
-                        
+                            </div>
+
                         )}
 
                         {email ? (
@@ -61,11 +61,11 @@ const Card = ({ userData }) => {
                                 <span className="mr-2 font-bold">Email</span>
                                 <a href={`mailto:${email}`} className="text-blue-500 dark:text-blue-300">{email}</a>
                             </div>
-                        ):(
+                        ) : (
                             <div className="flex items-center my-2 flex-col md:flex-row w-full justify-start">
                                 <span className="mr-2 font-bold">Email</span>
                                 <p className="text-gray-600 dark:text-white">No provided email</p>
-                            </div>                        
+                            </div>
                         )}
 
                         {blog ? (
@@ -73,12 +73,12 @@ const Card = ({ userData }) => {
                                 <span className="mr-2 font-bold">Blog</span>
                                 <a href={blog} rel="noreferrer" target="_blank" className="text-blue-500 dark:text-blue-300">{blog}</a>
                             </div>
-                        ):(
+                        ) : (
                             <div className="flex items-center my-2 flex-col md:flex-row w-full justify-start">
                                 <span className="mr-2 font-bold">Blog</span>
                                 <p className="text-gray-600 dark:text-white">No provided blog</p>
-                            </div>                        
-                        
+                            </div>
+
                         )}
                         {public_repos && (
                             <div className="flex items-center my-2 flex-col md:flex-row w-full justify-start">
@@ -91,7 +91,8 @@ const Card = ({ userData }) => {
                         <img
                             src={avatar_url}
                             alt={`${name}'s Avatar`}
-                            className="w-30 h-30 object-cover mb-4 rounded-lg"
+                            className="w-52 h-52 object-cover mb-4 rounded-lg"
+                            
                         />
                     </div>
                 </div>
@@ -109,13 +110,13 @@ const Card = ({ userData }) => {
                         </ul>
                     </div>
                 )}
-                
+
                 {socialAccounts?.length > 0 && (
                     <div className="mt-2 w-full justify-start flex flex-col flex-wrap lg:flex-nowrap lg:flex-row space-x-4 dark:text-white">
                         <span className="font-bold">Socials</span>
                         {socialAccounts.map((account, index) => (
-                            
-                            <div key={index} className="text-blue-500 dark:text-blue-300">                                
+
+                            <div key={index} className="text-blue-500 dark:text-blue-300">
                                 <SocialMediaIcons account={account} />
                             </div>
                         ))}
@@ -137,7 +138,7 @@ const Card = ({ userData }) => {
                     <div className="mt-2  mx-auto w-full grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
                         {repos.map((repo, index) => (
-                            <a key={index} href={repo.html_url} target="_blank" rel="noopener noreferrer" className="border p-4 rounded-lg shadow-sm text-blue-500 dark:text-blue-300 hover:bg-gray-100 transition duration-300 grid place-items-center">                                
+                            <a key={index} href={repo.html_url} target="_blank" rel="noopener noreferrer" className="border p-4 rounded-lg shadow-sm text-blue-500 dark:text-blue-300 hover:bg-gray-100 transition duration-300 grid place-items-center">
                                 <p className="font-bold text-center">{repo.name}</p>
                             </a>
                         ))}
