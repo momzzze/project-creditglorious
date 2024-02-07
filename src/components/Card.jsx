@@ -70,8 +70,8 @@ const Card = ({ userData }) => {
 
                         {blog ? (
                             <div className="flex items-center my-2 flex-col md:flex-row w-full justify-start">
-                                <span className="mr-2 font-bold">Blog</span>
-                                <a href={blog} rel="noreferrer" target="_blank" className="text-blue-500 dark:text-blue-300">{blog}</a>
+                                <span className="mr-2 font-bold">Blog</span>                                
+                                <a href={`https://${blog}`} rel="noopener noreferrer" target="_blank" className="text-blue-500 dark:text-blue-300">{blog}</a>
                             </div>
                         ) : (
                             <div className="flex items-center my-2 flex-col md:flex-row w-full justify-start">
